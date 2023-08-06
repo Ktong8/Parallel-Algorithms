@@ -6,7 +6,7 @@
 
 namespace prefix_sums {
     template <typename T, size_t N>
-    T prefix_sum(std::array<T, N> arr) {
+    T prefix_sum(std::array<T, N>& arr) {
         if (N == 1) {
             return arr[0];
         }
@@ -30,7 +30,7 @@ namespace prefix_sums {
     }
 
     template <typename T>
-    T prefix_sum(std::vector<T> arr) {
+    T prefix_sum(std::vector<T>& arr) {
         if (arr.size() == 1) {
             return arr[0];
         }
