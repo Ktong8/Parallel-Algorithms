@@ -6,4 +6,3 @@
 
 void TestVectorSum();
 void TestArraySum();
-void TestVectorArrSum();

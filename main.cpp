@@ -17,7 +17,6 @@ int prefix_sum_loop(std::vector<int>& arr) {
 void TestFunctions() {
     TestVectorSum();
     TestArraySum();
-    TestVectorArrSum();
 }
 
 
@@ -51,24 +50,5 @@ int main() {
     TestFunctions();
     std::vector<int> a(VECTOR_LEN);
     std::array<int, ARRAY_LEN> b{{}};
-    BenchmarkVector(
-        "Vector with " + std::to_string(VECTOR_LEN) + " integers",
-        VECTOR_LEN,
-        prefix_sums::prefix_sum<int>
-    );
-    BenchmarkArray<ARRAY_LEN>(
-        "Array with " + std::to_string(ARRAY_LEN) + " integers",
-        prefix_sums::prefix_sum<int, ARRAY_LEN>
-    );
-    BenchmarkVector(
-        "Vector with " + std::to_string(VECTOR_LEN) + " integers with for loop",
-        VECTOR_LEN,
-        prefix_sum_loop
-    );
-    BenchmarkVector(
-        "Vector with " + std::to_string(VECTOR_LEN) + " integers cache friendly",
-        VECTOR_LEN,
-        prefix_sums::prefix_sum_arr<int>
-    );
     return 0;
 }

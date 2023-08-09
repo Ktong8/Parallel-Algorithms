@@ -10,7 +10,3 @@ void TestArraySum() {
     assert (prefix_sums::prefix_sum(arr) == 21);
 }
 
-void TestVectorArrSum() {
-    std::vector<int> arr{1,2,3,4,5,6};
-    assert (prefix_sums::prefix_sum_arr(arr) == 21);
-}
