@@ -1,6 +1,7 @@
 #include "parallel_prefix_sum.h"
 #include "timer.h"
 #include "par_sum_test.h"
+#include "par_sort.h"
 #include <iostream>
 
 constexpr int VECTOR_LEN = 100000;
@@ -48,7 +49,22 @@ void BenchmarkArray(std::string message, std::function<int(std::array<int, N>&)>
 int main() {
     using benchmark::Timer;
     TestFunctions();
-    std::vector<int> a(VECTOR_LEN);
-    std::array<int, ARRAY_LEN> b{{}};
+    int a[10] = {7,3,8,2,1,6,4,5,9,0};
+    int b[10] = {0,0,0,0,0,0,0,0,0,0};
+    {
+        std::string message = "Benchmark for parallel merge sort: ";
+        Timer timer(message);
+        par_sort::par_merge_sort<10>(a, b);
+    }
+    {
+        std::string message = "Benchmark for serial merge sort: ";
+        Timer timer(message);
+        par_sort::merge_sort<10>(a,b);
+    }
+    {
+        std::string message = "Benchmark for std::sort: ";
+        Timer timer(message);
+        std::sort(std::begin(a), std::end(a));
+    }
     return 0;
 }
